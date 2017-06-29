@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 위의 부분은 고치면 안되는 설정 부분이기 때문에 복사해서 붙여 넣기 -->
+
+
+<mapper namespace="UserInfo">
+
+	<!-- 1. insert() : public int insert(UserInfo userInfo) -->
+	<insert id="insert" parameterType="com.haley.myuser.domain.UserInfo">
+		insert into userinfo
+		values(#{code},#{id},#{pw})
+	</insert>
+
+	<!-- 2. selectAll() : public UserInfo selectAll() -->
+	<select id="selectAll" resultType="com.haley.myuser.domain.UserInfo">
+		select * from userinfo
+	</select>
+
+	<!-- 3.selectOne() : public UserInfo selectOne(String id) -->
+	<select id="selectOne" resultType="com.haley.myuser.domain.UserInfo"
+		parameterType="java.lang.String">
+		select * from userinfo
+		where id = #{id}
+	</select>
+
+	<!-- 4. update() : public int update(UserInfo userInfo) -->
+	<update id="update" parameterType="com.haley.myuser.domain.UserInfo">
+		update userinfo
+		set pw=#{pw}
+		where id=#{id}
+	</update>
+
+	<!-- 5. delete() : public int delete(String id) -->
+	<delete id="delete" parameterType="java.lang.String">
+		delete from userinfo
+		where id = #{id}
+	</delete>
+
+
+</mapper>
